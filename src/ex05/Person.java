@@ -107,7 +107,7 @@ public class Person {
      * @return 
      */
     public boolean eval(String EGN) {
-        //validation logic
+        
         boolean eval = true;
 
         if (!EGN.matches("[0-9]{10}")) {
