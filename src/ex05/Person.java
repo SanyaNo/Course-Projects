@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
-
 /**
  *
  * @author SanyaNo
@@ -17,11 +16,13 @@ public class Person {
     // private String[] dateID = {"year", "month", "day"};
     private static Scanner listener = new Scanner(System.in);
 
+   
+    
     Person() {
 
         System.out.println("Please enter your name: ");
         String fName = listener.nextLine();
-        String name = fName.trim();
+        String name = nameFormat(fName);
         setName(name);
         System.out.printf("Welcome %s! Please enter your EGN: ", name);
 
@@ -38,38 +39,73 @@ public class Person {
 
             }
         }
-        
-       
+
 
     }
+    /**
+     * 
+     * @param name
+     * @return 
+     */
+    public String nameFormat(String name) {
+        
+        String formatedName = name.toLowerCase();
+        formatedName = formatedName.trim();
+        formatedName = Character.toUpperCase(formatedName.charAt(0)) + formatedName.substring(1);
+        return formatedName;
+    }
     
-    
+    /**
+     * 
+     * @param formatedDate 
+     */
 
     public void setFormatedDate(String formatedDate) {
-        
+
         this.formatedDate = formatedDate;
     }
+    
+    /**
+     * 
+     * @return 
+     */
 
     public String getFormatedDate() {
         return formatedDate;
     }
-
+    /**
+     * 
+     * @param EGN 
+     */
     public void setEGN(String EGN) {
         this.EGN = EGN;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public String getEGN() {
         return EGN;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public String getName() {
         return name;
     }
-
+    /**
+     * 
+     * @param name 
+     */
     public void setName(String name) {
         this.name = name;
     }
-
+    /**
+     * PIN Evaluation
+     * @param EGN
+     * @return 
+     */
     public boolean eval(String EGN) {
         //validation logic
         boolean eval = true;
@@ -78,6 +114,8 @@ public class Person {
             eval = false;
             return eval;
         }
+        
+        // Date evaluation
         int[] date = getDate(EGN);
         String fDate = formatDate(date);
 
@@ -90,6 +128,8 @@ public class Person {
             eval = false;
             return eval;
         }
+        
+        //Control number evaluation
 
         if (!controlNum(EGN)) {
             eval = false;
@@ -118,6 +158,13 @@ public class Person {
 
         return true;
     }
+    
+    /**
+     * Get the date of birth
+     * 
+     * @param EGN
+     * @return 
+     */
 
     public int[] getDate(String EGN) {
 
@@ -133,14 +180,33 @@ public class Person {
         return date;
 
     }
+    
+    /**
+     * The integer value of a random number represented by string
+     * 
+     * @param someNumber
+     * @param start
+     * @param end
+     * @return value
+     * TODO: Evaluation of the expected values of the string when 
+     * cast into integer
+     */
 
     public int getIntVal(String someNumber, int start, int end) {
-
+        
+        
         int val = Integer.parseInt(someNumber.substring(start, (end + 1)));
 
         return val;
 
     }
+    
+    /**
+     * Get yyyy-MM-dd format of a date in yy-MM-dd format
+     * 
+     * @param date
+     * @return 
+     */
 
     public String formatDate(int[] date) {
         String formatedDate = "";
@@ -163,6 +229,13 @@ public class Person {
 
         return formatedDate;
     }
+    
+    /**
+     * Evaluation of the control number in a PIN
+     * 
+     * @param EGN
+     * @return 
+     */
 
     public boolean controlNum(String EGN) {
         boolean eval = true;
