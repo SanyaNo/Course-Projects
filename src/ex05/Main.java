@@ -16,6 +16,8 @@ public class Main {
         Person ivan = new Person();
         Person john = new Person();
         
+        
+        
         EGNComp cmp = new EGNComp();
         cmp.whoIsOlder(ivan, john);
        

@@ -24,6 +24,8 @@ public class EGNComp {
         
         try{
  
+            
+            
     		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         	Date date1 = sdf.parse(per1.getFormatedDate()); 
         	Date date2 = sdf.parse(per2.getFormatedDate());
