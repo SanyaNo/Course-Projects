@@ -42,7 +42,7 @@ public class Ex1_b {
     
     /**
      * Sum the positive odd array values
-     * 
+     *  
      * @param arr
      * @return 
      */
